@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f4">
+    <title>Missed-call text-back demo</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2323734f'/%3E%3Cpath d='M20 42 43 19M25 19h18v18' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#" aria-label="CallBack demo home">
+        <span class="wordmark-icon" aria-hidden="true">↗</span>
+        <span>CallBack <span class="wordmark-light">demo</span></span>
+      </a>
+      <span class="demo-tag"><span aria-hidden="true">●</span> INTERACTIVE DEMO</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">NEVER MISS THE NEXT OPPORTUNITY</p>
+        <h1 id="page-title">A missed call can still<br class="desktop-break"> start a conversation.</h1>
+        <p>See how an instant text-back can help turn a missed call into a quote request.</p>
+      </section>
+
+      <div class="demo-layout">
+        <div class="controls-column">
+          <section class="panel setup-panel" aria-labelledby="setup-title">
+            <div class="section-heading">
+              <span class="step-number">01</span>
+              <div>
+                <h2 id="setup-title">Business setup</h2>
+                <p>Make this demo yours.</p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="business-name">Business name</label>
+              <input id="business-name" type="text" value="Liffey Insurance Quotes" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="quote-link">Quote link</label>
+              <input id="quote-link" type="url" value="https://example.com/quote" inputmode="url">
+            </div>
+            <div class="field">
+              <label for="reply-message">Auto-reply message</label>
+              <textarea id="reply-message" rows="3">Sorry we missed your call! Get your quote in 2 minutes here: {link} - {business}</textarea>
+              <span class="field-hint">Use <code>{business}</code> and <code>{link}</code> to personalize your reply.</span>
+            </div>
+            <div class="field caller-field">
+              <label for="caller-number">Caller number</label>
+              <input id="caller-number" type="tel" value="+353 87 123 4567" autocomplete="off">
+            </div>
+            <button class="simulate-button" id="simulate-button" type="button">
+              <span aria-hidden="true">↗</span>
+              Simulate missed call
+            </button>
+            <p class="privacy-note"><span aria-hidden="true">◉</span> This is a simulation. Nothing is sent or saved.</p>
+          </section>
+
+          <section class="panel results-panel" aria-labelledby="results-title">
+            <div class="section-heading compact-heading">
+              <span class="step-number">03</span>
+              <div class="results-title-line">
+                <h2 id="results-title">Your potential results</h2>
+                <span class="estimate-tag">ESTIMATE</span>
+              </div>
+            </div>
+            <div class="estimate-fields">
+              <div class="field">
+                <label for="missed-calls">Missed calls per week</label>
+                <input id="missed-calls" type="number" min="0" step="1" value="12" inputmode="numeric">
+              </div>
+              <div class="field">
+                <label for="reply-rate">% who reply</label>
+                <div class="input-suffix">
+                  <input id="reply-rate" type="number" min="0" max="100" step="1" value="25" inputmode="decimal">
+                  <span aria-hidden="true">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="job-value">Average job value</label>
+                <div class="input-prefix">
+                  <span aria-hidden="true">€</span>
+                  <input id="job-value" type="number" min="0" step="1" value="250" inputmode="decimal">
+                </div>
+              </div>
+            </div>
+            <div class="estimate-total" aria-live="polite">
+              <span>Estimated extra value per month</span>
+              <strong id="monthly-estimate">€0</strong>
+            </div>
+            <p class="estimate-disclaimer">A simple estimate, not a guarantee. Based on 4.33 weeks per month.</p>
+          </section>
+        </div>
+
+        <div class="preview-column">
+          <section class="phone-section" aria-labelledby="phone-section-title">
+            <div class="section-heading phone-heading">
+              <span class="step-number">02</span>
+              <div>
+                <h2 id="phone-section-title">The customer experience</h2>
+                <p>A missed call, followed by a helpful text.</p>
+              </div>
+            </div>
+            <div class="phone" aria-label="Phone preview">
+              <div class="phone-screen">
+                <div class="phone-status">
+                  <span id="phone-time">9:41</span>
+                  <span aria-hidden="true">●●●　◔ ▰</span>
+                </div>
+                <div class="phone-nav">
+                  <span aria-hidden="true">‹</span>
+                  <div class="phone-contact">
+                    <span class="contact-avatar" aria-hidden="true">?</span>
+                    <span id="phone-contact-number">Unknown caller</span>
+                  </div>
+                  <span aria-hidden="true">•••</span>
+                </div>
+                <div class="conversation" id="conversation" aria-live="polite" aria-label="Call and text conversation">
+                  <div class="conversation-date">TODAY</div>
+                  <div class="missed-call-card">
+                    <span class="missed-icon" aria-hidden="true">↙</span>
+                    <span><strong>Missed call</strong><small id="missed-call-number">Waiting for a call…</small></span>
+                  </div>
+                  <p class="phone-placeholder">Your text-back will appear here.</p>
+                </div>
+                <div class="message-compose" aria-hidden="true">
+                  <span>＋</span><span>iMessage</span><span>◉</span>
+                </div>
+              </div>
+            </div>
+            <p class="phone-caption"><span class="caption-dot" aria-hidden="true"></span> Your customer sees a message like this</p>
+          </section>
+
+          <section class="panel activity-panel" aria-labelledby="activity-title">
+            <div class="activity-header">
+              <div class="section-heading compact-heading">
+                <span class="step-number">04</span>
+                <div>
+                  <h2 id="activity-title">Activity log</h2>
+                  <p>Recent simulations, stored only in this page.</p>
+                </div>
+              </div>
+              <span class="activity-count" id="activity-count">0 / 20</span>
+            </div>
+            <div class="activity-empty" id="activity-empty">
+              <span aria-hidden="true">◷</span>
+              <p>Your simulated calls will show up here.</p>
+            </div>
+            <div class="activity-list" id="activity-list" aria-live="polite"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer>Demo only — no real texts are sent.</footer>
+  </body>
+</html>
