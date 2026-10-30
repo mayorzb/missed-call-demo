@@ -97,14 +97,7 @@ p {
   background: var(--green);
   font-size: 25px;
 }
-.ai-mark {
-  color: var(--green);
-  font-size: 13px;
-  letter-spacing: 0;
-  border: 1px solid #6ce9b142;
-  border-radius: 5px;
-  padding: 1px 5px;
-}
+
 .site-header nav {
   display: flex;
   gap: 30px;
@@ -512,7 +505,8 @@ h1 > span {
   color: #bcc7d8;
 }
 .field input,
-.field textarea {
+.field textarea,
+.field select {
   width: 100%;
   min-width: 0;
   min-height: 44px;
@@ -527,7 +521,8 @@ h1 > span {
     box-shadow 0.2s;
 }
 .field input:focus,
-.field textarea:focus {
+.field textarea:focus,
+.field select:focus {
   outline: none;
   border-color: var(--green);
   box-shadow: 0 0 0 3px #6ce9b111;
@@ -597,7 +592,7 @@ code {
 }
 .estimate-fields {
   display: grid;
-  grid-template-columns: 1fr 0.8fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 .estimate-fields .field {
@@ -1271,7 +1266,8 @@ footer > span {
     grid-template-columns: minmax(0, 1fr);
   }
   .field input,
-  .field textarea {
+  .field textarea,
+  .field select {
     font-size: 16px;
   }
   .estimate-fields .field input {

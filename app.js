@@ -13,6 +13,7 @@ const estimateInputs = [
   document.querySelector("#missed-calls"),
   document.querySelector("#reply-rate"),
   document.querySelector("#job-value"),
+  document.querySelector("#book-rate"),
 ];
 
 const replyButton = document.querySelector("#reply-button");
@@ -155,14 +156,17 @@ function renderActivity() {
 }
 
 function updateEstimate() {
-  const [callsInput, replyRateInput, jobValueInput] = estimateInputs;
+  const [callsInput, replyRateInput, jobValueInput, bookRateInput] =
+    estimateInputs;
   const calls = Math.max(0, Number(callsInput.value) || 0);
   const replyRate = Math.min(
     100,
     Math.max(0, Number(replyRateInput.value) || 0),
   );
   const jobValue = Math.max(0, Number(jobValueInput.value) || 0);
-  const monthlyValue = calls * (replyRate / 100) * jobValue * 4.33;
+  const bookRate = Math.min(100, Math.max(0, Number(bookRateInput.value) || 0));
+  const monthlyValue =
+    calls * (replyRate / 100) * (bookRate / 100) * jobValue * 4.33;
   updateDashboard();
   document.querySelector("#monthly-estimate").textContent =
     new Intl.NumberFormat("en-IE", {
@@ -251,4 +255,46 @@ replyButton.addEventListener("click", () => {
   replyButton.textContent = "Simulated lead recovered ✓";
   renderActivity();
   updateDashboard();
+});
+
+const industryPresets = {
+  plumber: {
+    business: "Liffey Plumbing",
+    message:
+      "Sorry we missed your call! Need help with plumbing? Request a quote here: {link} - {business}",
+    jobValue: 180,
+  },
+  electrician: {
+    business: "Liffey Electrical",
+    message:
+      "Sorry we missed your call! Tell us about your electrical job and request a quote here: {link} - {business}",
+    jobValue: 150,
+  },
+  insurance: {
+    business: "Liffey Insurance Quotes",
+    message:
+      "Sorry we missed your call! Get your insurance quote here: {link} - {business}",
+    jobValue: 120,
+  },
+  salon: {
+    business: "Liffey Salon",
+    message:
+      "Sorry we missed your call! Ready for your next appointment? Book here: {link} - {business}",
+    jobValue: 45,
+  },
+};
+
+document
+  .querySelector("#industry-preset")
+  .addEventListener("change", (event) => {
+    const preset = industryPresets[event.target.value];
+    if (!preset) return;
+    businessNameInput.value = preset.business;
+    replyMessageInput.value = preset.message;
+    estimateInputs[2].value = preset.jobValue;
+    updateEstimate();
+  });
+
+document.querySelector("#try-it-now").addEventListener("click", () => {
+  simulateButton.focus({ preventScroll: true });
 });
