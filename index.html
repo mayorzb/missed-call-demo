@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080e1a" />
-    <title>CallBack AI — Every missed call. A new opportunity.</title>
+    <title>CallBack — Every missed call. A new opportunity.</title>
     <meta
       name="description"
-      content="Explore CallBack AI: an interactive preview of missed-call text-back, lead recovery, and revenue opportunities for your business."
+      content="Explore CallBack: an interactive preview of missed-call text-back, lead recovery, and revenue opportunities for your business."
     />
     <link
       rel="icon"
@@ -19,7 +19,7 @@
   <body>
     <a class="skip-link" href="#workspace">Skip to interactive demo</a>
     <header class="site-header">
-      <a class="wordmark" href="#" aria-label="CallBack AI home"
+      <a class="wordmark" href="#" aria-label="CallBack home"
         ><span class="wordmark-icon" aria-hidden="true"
           ><svg
             class="icon"
@@ -33,7 +33,7 @@
           >
             <path d="M6 18 18 6M6 6h12v12" /></svg
         ></span>
-        CallBack <span class="ai-mark">AI</span></a
+        CallBack</a
       >
       <nav aria-label="Main navigation">
         <a href="#how-it-works">How it works</a
@@ -68,11 +68,11 @@
           </h1>
           <p>
             Turn the calls you can’t answer into conversations that move your
-            business forward. Meet your next AI-powered front desk.
+            business forward. Meet your next automatic text-back assistant.
           </p>
           <div class="hero-actions">
-            <a class="primary-link" href="#workspace"
-              >See it in action
+            <a class="primary-link" id="try-it-now" href="#simulate-button"
+              >Try it now
               <span aria-hidden="true"
                 ><svg
                   class="icon"
@@ -146,19 +146,19 @@
                 <path d="M6 18 18 6M6 6h12v12" /></svg
             ></span>
             <div>
-              <small>CALLBACK AI · CONCEPT PREVIEW</small
+              <small>CALLBACK · CONCEPT PREVIEW</small
               ><strong>Conversation, recovered.</strong
               ><span>A helpful reply. Right on time.</span>
             </div>
             <span class="signal-check">✓</span>
           </div>
-          <span class="art-label">HUMAN CONNECTION. INTELLIGENT TIMING.</span>
+          <span class="art-label">HUMAN CONNECTION. AUTOMATIC TEXT-BACK.</span>
         </div>
       </section>
       <section
         class="workflow"
         id="how-it-works"
-        aria-label="How CallBack AI works"
+        aria-label="How CallBack works"
       >
         <p>
           YOUR NEXT OPPORTUNITY,<br /><strong>without the extra work.</strong>
@@ -189,9 +189,9 @@
       <div class="sandbox-notice">
         <span aria-hidden="true">◇</span>
         <p>
-          <strong>A working demo of the experience.</strong> Calls, SMS, AI
-          responses, and leads are simulated in your browser. No phone service
-          or AI model is connected. Data clears on refresh.
+          <strong>A working demo of the experience.</strong> Calls, SMS,
+          automatic replies, and leads are simulated in your browser. No phone
+          service is connected. Data clears on refresh.
         </p>
       </div>
       <section class="dashboard" aria-label="Simulated lead recovery dashboard">
@@ -222,6 +222,16 @@
                 <h2 id="setup-title">Business settings</h2>
                 <p>Your brand. Your voice. Your first impression.</p>
               </div>
+            </div>
+            <div class="field">
+              <label for="industry-preset">Industry preset</label>
+              <select id="industry-preset">
+                <option value="">Choose an industry</option>
+                <option value="plumber">Plumber · €180</option>
+                <option value="electrician">Electrician · €150</option>
+                <option value="insurance">Insurance broker · €120</option>
+                <option value="salon">Salon · €45</option>
+              </select>
             </div>
             <div class="field">
               <label for="business-name">Business name</label>
@@ -317,6 +327,21 @@ Sorry we missed your call! Get your quote in 2 minutes here: {link} - {business}
                 </div>
               </div>
               <div class="field">
+                <label for="book-rate">% who book</label>
+                <div class="input-suffix">
+                  <input
+                    id="book-rate"
+                    type="number"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="30"
+                    inputmode="decimal"
+                  />
+                  <span aria-hidden="true">%</span>
+                </div>
+              </div>
+              <div class="field">
                 <label for="job-value">Average job value</label>
                 <div class="input-prefix">
                   <span aria-hidden="true">€</span>
@@ -336,9 +361,9 @@ Sorry we missed your call! Get your quote in 2 minutes here: {link} - {business}
               <strong id="monthly-estimate">€0</strong>
             </div>
             <p class="estimate-disclaimer">
-              Illustrative opportunity, not revenue or a guarantee. Assumes
-              every reply becomes a job: calls × reply rate × job value × 4.33
-              weeks.
+              Illustrative opportunity, not revenue or a guarantee. Calls ×
+              reply rate × booking rate × job value × 4.33 weeks. Booking rate
+              is the percentage of replies that become jobs.
             </p>
           </section>
         </div>
@@ -506,8 +531,8 @@ Sorry we missed your call! Get your quote in 2 minutes here: {link} - {business}
           >
             <path d="M6 18 18 6M6 6h12v12" /></svg
         ></span>
-        CallBack <span class="ai-mark">AI</span></a
-      ><span>An interactive product concept. No live AI, calling, or SMS.</span
+        CallBack</a
+      ><span>An interactive product concept. No live calling or SMS.</span
       ><a href="#workspace">Back to demo ↑</a>
     </footer>
   </body>
