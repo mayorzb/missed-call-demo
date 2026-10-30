@@ -1,81 +1,318 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f5f7f4">
-    <title>Missed-call text-back demo</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2323734f'/%3E%3Cpath d='M20 42 43 19M25 19h18v18' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080e1a" />
+    <title>CallBack AI — Every missed call. A new opportunity.</title>
+    <meta
+      name="description"
+      content="Explore CallBack AI: an interactive preview of missed-call text-back, lead recovery, and revenue opportunities for your business."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2323734f'/%3E%3Cpath d='M20 42 43 19M25 19h18v18' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#workspace">Skip to interactive demo</a>
     <header class="site-header">
-      <a class="wordmark" href="#" aria-label="CallBack demo home">
-        <span class="wordmark-icon" aria-hidden="true">↗</span>
-        <span>CallBack <span class="wordmark-light">demo</span></span>
-      </a>
-      <span class="demo-tag"><span aria-hidden="true">●</span> INTERACTIVE DEMO</span>
+      <a class="wordmark" href="#" aria-label="CallBack AI home"
+        ><span class="wordmark-icon" aria-hidden="true"
+          ><svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 18 18 6M6 6h12v12" /></svg
+        ></span>
+        CallBack <span class="ai-mark">AI</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#how-it-works">How it works</a
+        ><a href="#workspace">Interactive demo</a
+        ><a href="#results-title">Your opportunity</a>
+      </nav>
+      <a class="header-cta" href="#workspace"
+        >Explore the demo
+        <span aria-hidden="true"
+          ><svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 18 18 6M6 6h12v12" /></svg></span
+      ></a>
     </header>
-
     <main>
       <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow">NEVER MISS THE NEXT OPPORTUNITY</p>
-        <h1 id="page-title">A missed call can still<br class="desktop-break"> start a conversation.</h1>
-        <p>See how an instant text-back can help turn a missed call into a quote request.</p>
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot"></span> ALWAYS ON. ALWAYS AN OPPORTUNITY.
+          </p>
+          <h1 id="page-title">
+            You miss the call.<br />
+            <span>Not the customer.</span>
+          </h1>
+          <p>
+            Turn the calls you can’t answer into conversations that move your
+            business forward. Meet your next AI-powered front desk.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#workspace"
+              >See it in action
+              <span aria-hidden="true"
+                ><svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg></span></a
+            ><a class="text-link" href="#how-it-works"
+              >How it works <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <p class="hero-note">
+            No signup. No real messages. Just possibilities.
+          </p>
+        </div>
+        <div
+          class="hero-art"
+          aria-label="Illustration of a missed call becoming a conversation"
+        >
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+          <div class="core" aria-hidden="true">
+            <svg
+              viewBox="0 0 100 100"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="7"
+              stroke-linecap="round"
+            >
+              <path d="M50 15v70M15 50h70M25 25l50 50M25 75l50-50" />
+            </svg>
+          </div>
+          <div class="signal-card signal-call">
+            <span class="signal-icon coral"
+              ><svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 18 18 6M6 6h12v12" /></svg
+            ></span>
+            <div>
+              <small>INCOMING OPPORTUNITY</small
+              ><strong>Missed call detected</strong
+              ><span>Your next customer is calling.</span>
+            </div>
+          </div>
+          <div class="signal-card signal-message">
+            <span class="signal-icon"
+              ><svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 18 18 6M6 6h12v12" /></svg
+            ></span>
+            <div>
+              <small>CALLBACK AI · CONCEPT PREVIEW</small
+              ><strong>Conversation, recovered.</strong
+              ><span>A helpful reply. Right on time.</span>
+            </div>
+            <span class="signal-check">✓</span>
+          </div>
+          <span class="art-label">HUMAN CONNECTION. INTELLIGENT TIMING.</span>
+        </div>
       </section>
-
+      <section
+        class="workflow"
+        id="how-it-works"
+        aria-label="How CallBack AI works"
+      >
+        <p>
+          YOUR NEXT OPPORTUNITY,<br /><strong>without the extra work.</strong>
+        </p>
+        <div>
+          <span>01</span><strong>A call goes unanswered</strong
+          ><small>You’re busy doing what you do best.</small>
+        </div>
+        <div>
+          <span>02</span><strong>A conversation starts</strong
+          ><small>A personalized text opens the door.</small>
+        </div>
+        <div>
+          <span>03</span><strong>A lead stays in reach</strong
+          ><small>Follow up with context and confidence.</small>
+        </div>
+      </section>
+      <section class="workspace-intro" id="workspace">
+        <div>
+          <p class="eyebrow">THE INTERACTIVE EXPERIENCE</p>
+          <h2>Your business. On the front foot.</h2>
+          <p>Make it yours, miss a call, and watch the recovery flow.</p>
+        </div>
+        <span class="demo-tag"
+          ><span class="status-dot"></span> SANDBOX MODE</span
+        >
+      </section>
+      <div class="sandbox-notice">
+        <span aria-hidden="true">◇</span>
+        <p>
+          <strong>A working demo of the experience.</strong> Calls, SMS, AI
+          responses, and leads are simulated in your browser. No phone service
+          or AI model is connected. Data clears on refresh.
+        </p>
+      </div>
+      <section class="dashboard" aria-label="Simulated lead recovery dashboard">
+        <div>
+          <span>Simulated missed calls</span><strong id="metric-calls">0</strong
+          ><small>This session</small>
+        </div>
+        <div>
+          <span>Text-backs delivered</span><strong id="metric-texts">0</strong
+          ><small><i></i> Simulated delivery</small>
+        </div>
+        <div>
+          <span>Conversations recovered</span
+          ><strong id="metric-leads">0</strong
+          ><small>Customer reply simulated</small>
+        </div>
+        <div class="dashboard-highlight">
+          <span>Potential lead value</span><strong id="metric-value">€0</strong
+          ><small>Recovered leads × your job value</small>
+        </div>
+      </section>
       <div class="demo-layout">
         <div class="controls-column">
           <section class="panel setup-panel" aria-labelledby="setup-title">
             <div class="section-heading">
               <span class="step-number">01</span>
               <div>
-                <h2 id="setup-title">Business setup</h2>
-                <p>Make this demo yours.</p>
+                <h2 id="setup-title">Business settings</h2>
+                <p>Your brand. Your voice. Your first impression.</p>
               </div>
             </div>
             <div class="field">
               <label for="business-name">Business name</label>
-              <input id="business-name" type="text" value="Liffey Insurance Quotes" autocomplete="organization">
+              <input
+                id="business-name"
+                type="text"
+                value="Liffey Insurance Quotes"
+                autocomplete="organization"
+              />
             </div>
             <div class="field">
               <label for="quote-link">Quote link</label>
-              <input id="quote-link" type="url" value="https://example.com/quote" inputmode="url">
+              <input
+                id="quote-link"
+                type="url"
+                value="https://example.com/quote"
+                inputmode="url"
+              />
             </div>
             <div class="field">
               <label for="reply-message">Auto-reply message</label>
-              <textarea id="reply-message" rows="3">Sorry we missed your call! Get your quote in 2 minutes here: {link} - {business}</textarea>
-              <span class="field-hint">Use <code>{business}</code> and <code>{link}</code> to personalize your reply.</span>
+              <textarea id="reply-message" rows="3">
+Sorry we missed your call! Get your quote in 2 minutes here: {link} - {business}</textarea>
+              <span class="field-hint"
+                >Use <code>{business}</code> and <code>{link}</code> to
+                personalize your reply.</span
+              >
             </div>
             <div class="field caller-field">
               <label for="caller-number">Caller number</label>
-              <input id="caller-number" type="tel" value="+353 87 123 4567" autocomplete="off">
+              <input
+                id="caller-number"
+                type="tel"
+                value="+353 87 123 4567"
+                autocomplete="off"
+              />
             </div>
             <button class="simulate-button" id="simulate-button" type="button">
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true"
+                ><svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span>
               Simulate missed call
             </button>
-            <p class="privacy-note"><span aria-hidden="true">◉</span> This is a simulation. Nothing is sent or saved.</p>
+            <p class="privacy-note">
+              <span aria-hidden="true">◉</span> Demo only. No calls or texts are
+              sent.
+            </p>
           </section>
 
           <section class="panel results-panel" aria-labelledby="results-title">
             <div class="section-heading compact-heading">
               <span class="step-number">03</span>
               <div class="results-title-line">
-                <h2 id="results-title">Your potential results</h2>
+                <h2 id="results-title">Revenue opportunity</h2>
                 <span class="estimate-tag">ESTIMATE</span>
               </div>
             </div>
             <div class="estimate-fields">
               <div class="field">
                 <label for="missed-calls">Missed calls per week</label>
-                <input id="missed-calls" type="number" min="0" step="1" value="12" inputmode="numeric">
+                <input
+                  id="missed-calls"
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="12"
+                  inputmode="numeric"
+                />
               </div>
               <div class="field">
                 <label for="reply-rate">% who reply</label>
                 <div class="input-suffix">
-                  <input id="reply-rate" type="number" min="0" max="100" step="1" value="25" inputmode="decimal">
+                  <input
+                    id="reply-rate"
+                    type="number"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="25"
+                    inputmode="decimal"
+                  />
                   <span aria-hidden="true">%</span>
                 </div>
               </div>
@@ -83,15 +320,26 @@
                 <label for="job-value">Average job value</label>
                 <div class="input-prefix">
                   <span aria-hidden="true">€</span>
-                  <input id="job-value" type="number" min="0" step="1" value="250" inputmode="decimal">
+                  <input
+                    id="job-value"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value="250"
+                    inputmode="decimal"
+                  />
                 </div>
               </div>
             </div>
             <div class="estimate-total" aria-live="polite">
-              <span>Estimated extra value per month</span>
+              <span>Potential opportunity / month</span>
               <strong id="monthly-estimate">€0</strong>
             </div>
-            <p class="estimate-disclaimer">A simple estimate, not a guarantee. Based on 4.33 weeks per month.</p>
+            <p class="estimate-disclaimer">
+              Illustrative opportunity, not revenue or a guarantee. Assumes
+              every reply becomes a job: calls × reply rate × job value × 4.33
+              weeks.
+            </p>
           </section>
         </div>
 
@@ -100,8 +348,8 @@
             <div class="section-heading phone-heading">
               <span class="step-number">02</span>
               <div>
-                <h2 id="phone-section-title">The customer experience</h2>
-                <p>A missed call, followed by a helpful text.</p>
+                <h2 id="phone-section-title">A better first response</h2>
+                <p>Your customer’s view · SMS simulation</p>
               </div>
             </div>
             <div class="phone" aria-label="Phone preview">
@@ -118,43 +366,149 @@
                   </div>
                   <span aria-hidden="true">•••</span>
                 </div>
-                <div class="conversation" id="conversation" aria-live="polite" aria-label="Call and text conversation">
+                <div
+                  class="conversation"
+                  id="conversation"
+                  aria-live="polite"
+                  aria-label="Call and text conversation"
+                >
                   <div class="conversation-date">TODAY</div>
                   <div class="missed-call-card">
-                    <span class="missed-icon" aria-hidden="true">↙</span>
-                    <span><strong>Missed call</strong><small id="missed-call-number">Waiting for a call…</small></span>
+                    <span class="missed-icon" aria-hidden="true"
+                      ><svg
+                        class="icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg
+                    ></span>
+                    <span
+                      ><strong>Missed call</strong
+                      ><small id="missed-call-number"
+                        >Waiting for a call…</small
+                      ></span
+                    >
                   </div>
-                  <p class="phone-placeholder">Your text-back will appear here.</p>
+                  <p class="phone-placeholder">
+                    Ready when you are. Simulate your first call.
+                  </p>
                 </div>
                 <div class="message-compose" aria-hidden="true">
-                  <span>＋</span><span>iMessage</span><span>◉</span>
+                  <span>＋</span><span>Text message · simulated</span
+                  ><span>◉</span>
                 </div>
               </div>
             </div>
-            <p class="phone-caption"><span class="caption-dot" aria-hidden="true"></span> Your customer sees a message like this</p>
+            <button
+              class="reply-button"
+              id="reply-button"
+              type="button"
+              disabled
+            >
+              Simulate customer reply
+              <span aria-hidden="true"
+                ><svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span>
+            </button>
+            <p class="phone-caption">
+              <span class="caption-dot" aria-hidden="true"></span> SMS preview ·
+              no messages leave this page
+            </p>
           </section>
 
-          <section class="panel activity-panel" aria-labelledby="activity-title">
+          <section
+            class="panel activity-panel"
+            aria-labelledby="activity-title"
+          >
             <div class="activity-header">
               <div class="section-heading compact-heading">
-                <span class="step-number">04</span>
+                <span class="step-number"
+                  ><svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 18 18 6M6 6h12v12" /></svg
+                ></span>
                 <div>
-                  <h2 id="activity-title">Activity log</h2>
-                  <p>Recent simulations, stored only in this page.</p>
+                  <h2 id="activity-title">Recovery activity</h2>
+                  <p>Your recovery pipeline, one conversation at a time.</p>
                 </div>
               </div>
               <span class="activity-count" id="activity-count">0 / 20</span>
             </div>
             <div class="activity-empty" id="activity-empty">
               <span aria-hidden="true">◷</span>
-              <p>Your simulated calls will show up here.</p>
+              <p>A quiet inbox. Let’s change that.</p>
             </div>
-            <div class="activity-list" id="activity-list" aria-live="polite"></div>
+            <div
+              class="activity-list"
+              id="activity-list"
+              aria-live="polite"
+            ></div>
           </section>
         </div>
       </div>
     </main>
 
-    <footer>Demo only — no real texts are sent.</footer>
+    <section class="closing">
+      <p class="eyebrow">A LITTLE FASTER. A LOT MORE CONNECTED.</p>
+      <h2>Great service starts<br />before you pick up.</h2>
+      <a class="primary-link" href="#workspace"
+        >Try another scenario
+        <span aria-hidden="true"
+          ><svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 18 18 6M6 6h12v12" /></svg></span
+      ></a>
+      <p>Explore the concept. Imagine the opportunity.</p>
+    </section>
+    <footer>
+      <a class="wordmark" href="#"
+        ><span class="wordmark-icon" aria-hidden="true"
+          ><svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 18 18 6M6 6h12v12" /></svg
+        ></span>
+        CallBack <span class="ai-mark">AI</span></a
+      ><span>An interactive product concept. No live AI, calling, or SMS.</span
+      ><a href="#workspace">Back to demo ↑</a>
+    </footer>
   </body>
 </html>
