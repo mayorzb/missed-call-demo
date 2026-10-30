@@ -15,13 +15,19 @@ const estimateInputs = [
   document.querySelector("#job-value"),
 ];
 
+const replyButton = document.querySelector("#reply-button");
 const activity = [];
+let totalCalls = 0;
+let totalTexts = 0;
+let totalLeads = 0;
 let currentSimulationId = 0;
 
 function safeHttpUrl(value) {
   try {
     const url = new URL(value);
-    return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
+    return url.protocol === "https:" || url.protocol === "http:"
+      ? url.href
+      : null;
   } catch {
     return null;
   }
@@ -35,7 +41,13 @@ function buildMessage() {
     .replaceAll("{business}", business)
     .replaceAll("{link}", link);
 
-  return { message, link: safeHttpUrl(link), template, business };
+  return {
+    message,
+    link: safeHttpUrl(link),
+    linkText: link,
+    template,
+    business,
+  };
 }
 
 function renderMessage(messageData) {
@@ -56,7 +68,11 @@ function renderMessage(messageData) {
         bubble.append(document.createTextNode(messageData.linkText));
       }
     } else {
-      bubble.append(document.createTextNode(part.replaceAll("{business}", messageData.business)));
+      bubble.append(
+        document.createTextNode(
+          part.replaceAll("{business}", messageData.business),
+        ),
+      );
     }
   }
 
@@ -76,7 +92,16 @@ function updateConversation(number, messageData, showMessage) {
   const icon = document.createElement("span");
   icon.className = "missed-icon";
   icon.setAttribute("aria-hidden", "true");
-  icon.textContent = "↙";
+  const arrow = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  arrow.setAttribute("class", "icon");
+  arrow.setAttribute("viewBox", "0 0 24 24");
+  arrow.setAttribute("fill", "none");
+  arrow.setAttribute("stroke", "currentColor");
+  arrow.setAttribute("stroke-width", "1.7");
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", "M6 18 18 6M6 6h12v12");
+  arrow.append(path);
+  icon.append(arrow);
   const callDetails = document.createElement("span");
   const title = document.createElement("strong");
   title.textContent = "Missed call";
@@ -114,7 +139,11 @@ function renderActivity() {
     caller.textContent = entry.number || "Unknown caller";
     const status = document.createElement("span");
     status.className = `activity-status${entry.sent ? " sent" : ""}`;
-    status.textContent = entry.sent ? "Missed · text sent" : "Missed · sending…";
+    status.textContent = entry.replied
+      ? "Lead recovered · simulated reply"
+      : entry.sent
+        ? "Missed · simulated SMS delivered"
+        : "Missed · preparing text-back…";
     details.append(caller, status);
     const check = document.createElement("span");
     check.className = "activity-check";
@@ -128,14 +157,19 @@ function renderActivity() {
 function updateEstimate() {
   const [callsInput, replyRateInput, jobValueInput] = estimateInputs;
   const calls = Math.max(0, Number(callsInput.value) || 0);
-  const replyRate = Math.min(100, Math.max(0, Number(replyRateInput.value) || 0));
+  const replyRate = Math.min(
+    100,
+    Math.max(0, Number(replyRateInput.value) || 0),
+  );
   const jobValue = Math.max(0, Number(jobValueInput.value) || 0);
   const monthlyValue = calls * (replyRate / 100) * jobValue * 4.33;
-  document.querySelector("#monthly-estimate").textContent = new Intl.NumberFormat("en-IE", {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  }).format(monthlyValue);
+  updateDashboard();
+  document.querySelector("#monthly-estimate").textContent =
+    new Intl.NumberFormat("en-IE", {
+      style: "currency",
+      currency: "EUR",
+      maximumFractionDigits: 0,
+    }).format(monthlyValue);
 }
 
 function simulateMissedCall() {
@@ -145,11 +179,18 @@ function simulateMissedCall() {
   const entry = {
     id: ++currentSimulationId,
     number,
-    time: new Intl.DateTimeFormat("en-IE", { hour: "2-digit", minute: "2-digit" }).format(new Date()),
+    time: new Intl.DateTimeFormat("en-IE", {
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(new Date()),
     sent: false,
   };
 
+  totalCalls++;
+  replyButton.disabled = true;
+  replyButton.textContent = "Simulate customer reply";
   activity.unshift(entry);
+  updateDashboard();
   activity.splice(20);
   updateConversation(number, messageData, false);
   renderActivity();
@@ -158,9 +199,12 @@ function simulateMissedCall() {
 
   window.setTimeout(() => {
     entry.sent = true;
+    totalTexts++;
+    updateDashboard();
     renderActivity();
     if (entry.id === currentSimulationId) {
       updateConversation(number, messageData, true);
+      replyButton.disabled = false;
       simulateButton.disabled = false;
       simulateButton.removeAttribute("aria-busy");
     }
@@ -168,5 +212,43 @@ function simulateMissedCall() {
 }
 
 simulateButton.addEventListener("click", simulateMissedCall);
-estimateInputs.forEach((input) => input.addEventListener("input", updateEstimate));
+estimateInputs.forEach((input) =>
+  input.addEventListener("input", updateEstimate),
+);
 updateEstimate();
+
+function currency(value) {
+  return new Intl.NumberFormat("en-IE", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function updateDashboard() {
+  document.querySelector("#metric-calls").textContent = totalCalls;
+  document.querySelector("#metric-texts").textContent = totalTexts;
+  document.querySelector("#metric-leads").textContent = totalLeads;
+  document.querySelector("#metric-value").textContent = currency(
+    totalLeads * Math.max(0, Number(estimateInputs[2].value) || 0),
+  );
+}
+
+replyButton.addEventListener("click", () => {
+  const entry = activity.find((item) => item.id === currentSimulationId);
+  if (!entry || !entry.sent || entry.replied) return;
+  entry.replied = true;
+  totalLeads++;
+  const bubble = document.createElement("div");
+  bubble.className = "text-bubble customer-bubble";
+  bubble.textContent =
+    "Thanks for getting back to me! I’d love a quote. When can we chat?";
+  const note = document.createElement("span");
+  note.className = "delivery-note";
+  note.textContent = "Illustrative customer response · lead recovered";
+  conversation.append(bubble, note);
+  replyButton.disabled = true;
+  replyButton.textContent = "Simulated lead recovered ✓";
+  renderActivity();
+  updateDashboard();
+});
